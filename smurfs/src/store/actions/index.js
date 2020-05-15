@@ -1,6 +1,7 @@
 import axios from 'axios'
 export const POST_SMURF_START = 'POST_SMURF'
 export const POST_SMURF_SUCCESS = 'POST_SMURF'
+export const UPDATE_SMURF = 'UPDATE_SMURF'
 
 export const FETCH_SMURFS_START = 'FETCH_SMURFS_START'
 export const FETCH_SMURFS_SUCCESS = 'FETCH_SMURFS_SUCCESS'
@@ -26,4 +27,11 @@ export const postSmurf = (inputObj)=>{
             })
     }
 
+}
+export const updateSmurf = (id,inputObj)=>{
+    return dispatch=>{
+        dispatch({type:UPDATE_SMURF})
+        axios.put(`http://localhost:3333/smurfs/${id}`,inputObj)
+            .then(res=>{console.log(res)})
+    }
 }
